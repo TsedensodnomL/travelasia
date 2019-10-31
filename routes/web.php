@@ -21,7 +21,7 @@ Route::get('/user/{username}','userController@edit');
 
 Route::post('/user/{username}/update', 'userController@update');
 
-Route::get('/order', function(){
+Route::get('/order/{username}', function(){
     return view('userorder');
 });
 
@@ -36,6 +36,8 @@ Route::get('/signup', function(){
 });
 
 Route::post('signup/store', 'signupController@store');
+
+Route::get('login/search', 'loginController@search');
 
 
 // Travel category

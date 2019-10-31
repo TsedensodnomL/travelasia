@@ -31,4 +31,22 @@ class userController extends Controller
             'nationality'=>$nation, 'phone'=>$phone]
         );
     }
+
+    public function orderedit($username){
+
+    }
+
+    public function orderupdate(Request $req, $id){
+
+    }
+
+    public function ordershow($username){
+
+    }
+
+    public function orderdelete($username){
+        
+    }
+
+
 }

@@ -35,7 +35,8 @@
                     <div class="login-image half-img col-lg-6 no-padding">
                         <img class="img-fluid d-block" src="img/flight.jpg">
                     </div>
-                    <div class="login-form-info col-lg-6">
+                    <form class="login-form-info sign-up col-lg-6" action='login/search' method='get'>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <img src="img/logo.png" class="login-logo">
 
                         <span class="login100-form-title " style="padding-bottom: 43px;">
@@ -43,9 +44,9 @@
                         </span>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                <input class="input100" type="text" name="email">
+                                <input class="input100" type="text" name="username">
                                 <span class="focus-input100"></span>
-                                <span class="label-input100">Цахим шуудан</span>
+                                <span class="label-input100">Хэрэглэгчийн нэр</span>
                             </div>
                             
                             
@@ -65,10 +66,10 @@
                             </div>
 
                             <div class="container-login100-form-btn">
-                                    <a href="index.html" class="primary-btn">Нэвтрэх<span class="lnr lnr-arrow-right"></span></a>
+                                    <button class="primary-btn">Нэвтрэх<span class="lnr lnr-arrow-right"></span></button>
                             </div>
                                 
-                    </div>
+                    </form>
                 </div>
 
             </div>

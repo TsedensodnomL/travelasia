@@ -52,7 +52,7 @@
 								<div class="menu-bar"><span class="lnr lnr-menu"></span></div>
 
 								<div class="user" style="width: 22px;">
-									<a href="/user"> <span class="lnr lnr-user"></span> </a> 
+									<a href="/user/{{session('username')}}"> <span class="lnr lnr-user"></span> </a> 
 								</div> 
 							</div>
 

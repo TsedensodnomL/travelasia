@@ -5,8 +5,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-center user-links-wrap no-padding   ">
-                        <a href="user">Бүртгэлийн мэдээлэл</a>
-                        <a href="order">Захиалга</a>
+                        <a href="/user/{{session('username')}}">Бүртгэлийн мэдээлэл</a>
+                        <a href="/order/{{session('username')}}">Захиалга</a>
                     </div>    
                 </div>
 
