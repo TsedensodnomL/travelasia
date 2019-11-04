@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -30,10 +31,12 @@ class userController extends Controller
             'lastname'=>$lname, 'birthdate'=>$birth, 
             'nationality'=>$nation, 'phone'=>$phone]
         );
+        $path = "/user/".session('username');
+        return redirect($path);
     }
 
     public function orderedit($username){
-
+        
     }
 
     public function orderupdate(Request $req, $id){
@@ -41,11 +44,18 @@ class userController extends Controller
     }
 
     public function ordershow($username){
-
+        $order = DB::table('orders')->where('orders.user_username',$username)
+                                    ->join('travel','travel.id','=','orders.travel_id')
+                                   ->get();
+        
+        return view('userorder', ['order'=>$order]);
     }
 
-    public function orderdelete($username){
-        
+    public function orderdelete($id, $idd){
+        $status = DB::table('orders')->where('id',$idd)
+                                       ->delete();
+        $url = '/'.session('username').'/order';
+        return redirect($url);
     }
 
 

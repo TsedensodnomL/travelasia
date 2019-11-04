@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-center user-links-wrap no-padding   ">
                         <a href="/user/{{session('username')}}">Бүртгэлийн мэдээлэл</a>
-                        <a href="/order/{{session('username')}}">Захиалга</a>
+                        <a href="/{{session('username')}}/order">Захиалга</a>
                     </div>    
                 </div>
 
@@ -15,23 +15,30 @@
                                 <thead>
                                   <tr>
                                     <th scope="col">Дугаар</th>
+                                    <th scope="col">Аялал</th>
                                     <th scope="col">Эхлэл</th>
                                     <th scope="col">Дуусах</th>
-                                    <th scope="col">Том хүн</th>
-                                    <th scope="col">Хүүхэд</th>
+                                   
+                                    <th scope="col">Тоо</th>
                                     <th scope="col">Үйлдлэл</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td>15</td>
-                                    <td>22</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td><a href=""><span class="lnr lnr-trash"></span></a></td>
-                                  </tr>
-                                  
+                                  <?php 
+                                  foreach($order as $o){
+                                    
+                                    echo "<tr>";
+                                    echo "<td>".$o->id."</td>";
+                                    echo "<td>".$o->name."</td>";
+                                    echo "<td>".$o->start."</td>";
+                                    echo "<td>".$o->end."</td>";
+                                    echo "<td>".$o->traveler_number."</td>";
+                                    echo "<td> <a href='/{{$o->user_username}}/order/{$o->id}/delete'> <span class='lnr lnr-trash'></span></a></td>";
+                                    echo "</tr>";
+
+                                  }
+                                  ?>
+                                                                  
                                 </tbody>
                               </table>
                 </div>

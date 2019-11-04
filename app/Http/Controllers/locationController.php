@@ -45,7 +45,7 @@ class locationController extends Controller
         $status = DB::table('location')
                                     ->where('id','=',$id)
                                     ->delete();
-                                    echo $status;
+                            
         return redirect('admin/location/show');
     }
 

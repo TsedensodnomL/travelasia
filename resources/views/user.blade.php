@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-center user-links-wrap no-padding   ">
                         <a href="/user/{{session('username')}}">Бүртгэлийн мэдээлэл</a>
-                        <a href="/order/{{session('username')}}">Захиалга</a>
+                        <a href="/{{session('username')}}/order">Захиалга</a>
                     </div>
                      
                 </div>

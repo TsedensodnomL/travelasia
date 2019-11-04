@@ -21,10 +21,14 @@ Route::get('/user/{username}','userController@edit');
 
 Route::post('/user/{username}/update', 'userController@update');
 
-Route::get('/order/{username}', function(){
-    return view('userorder');
-});
 
+Route::get('/{username}/order', 'userController@ordershow');
+
+Route::get('/{username}/order/{id}/edit', 'userController@orderedit');
+
+Route::get('/{username}/order/{id}/update', 'userController@orderupdate');
+
+Route::get('/{username}/order/{id}/delete', 'userController@orderdelete');
 
 // Login & Signup
 Route::get('/login', function(){
