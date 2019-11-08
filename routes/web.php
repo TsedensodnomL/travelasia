@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'userController@index');
 
 // User profile
 
@@ -122,11 +120,14 @@ Route::get('/admin/addtravel', function(){
     return view('addtravel');
 });
 
-Route::get('category/water', function(){
-    return view('water');
-});
 
-Route::get('category/water/baikal', function(){
-    return view('baikal');
-});
+//User travel ordering
+Route::get('category/{id}', 'travelController@travel');
 
+Route::get('category/{cid}/{tid}', 'travelController@travelMore');
+
+Route::post('order/{id}', 'userController@orderstore');
+
+
+//Logout
+Route::get('/logout', 'userController@logout');

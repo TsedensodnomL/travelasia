@@ -17,6 +17,11 @@
 												<input type="text" class="form-control" id="category" name="category" placeholder="">
 					
 											</div>
+											<div class="form-group">
+												<label for="photo">Зураг</label>
+												<input type="file" class="form-control-file" id="photo" name="image" placeholder="">
+					
+											</div>
 										</div>
 									</div>	
 								</div>

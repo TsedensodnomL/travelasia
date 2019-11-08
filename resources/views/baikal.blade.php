@@ -15,33 +15,28 @@
 
 
 
-                                <h1>Байгаль нуур</h1>
-                                <p>3 хоногийн турш Байгаль нуураар завьтай аялах энэхүү аялал маань сайхан байх болно.</p>
-                                <p>Байгаль нуур нь Орос улсын урд хэсэгт оршдог дэлхийн хамгийн тунгалаг нуур юм.</p>
-                                <p>Үнэ: <span> 250,000₮ <span> </p>
-                                <p>Эхлэх: 2019-10-25 </p>
-                                <p>Дуусах: 2019-10-28 </p>
+                                <h1>{{$travel[0]->name}}</h1>
+                                <p>{{$travel[0]->description}}</p>
+                                <p>{{$travel[0]->des}}</p>
+                                <p>Үнэ: <span> {{$travel[0]->price}}<span> </p>
+                                <p>Эхлэх: {{$travel[0]->start}} </p>
+                                <p>Дуусах: {{$travel[0]->end}}</p>
 
                             </div>
                             <div class="tab-content">
             
-                                                <form class="booking-form" id="booking" action="mail.php">
+                                                <form class="booking-form" id="booking" method="post" action="/order/{{$id}}">
+                                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                   
                                                    <div class="row">
                                                       
+                                                      
                                                       <div class="col-md-6">
-                                                          <input id="datepicker" name="start" class="single-in form-control"  onblur="this.placeholder = 'Start'" type="text" placeholder="Start" required>
+                                                        <input style="margin-bottom: 0" type="text" name="count" class="single-in form-control" placeholder="Хүний тоо" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Хүний тоо" required="">
                                                       </div>
-                                                      <div class="col-md-6">
-                                                          <input id="datepicker2" name="return" class="single-in form-control"  onblur="this.placeholder = 'Return'" type="text" placeholder="Return" required>
-                                                      </div>
-                                                      <div class="col-md-6">
-                                                        <input type="text" name="adults" class="single-in form-control" placeholder="Adults" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults'" required="">
-                                                      </div>
-                                                      <div class="col-md-6">
-                                                        <input type="text" name="child" class="single-in form-control" placeholder="Child" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child'">
-                                                      </div>
-                                                      <div class="col-lg-12 d-flex justify-content-end">
-                                                          <button class="primary-btn mt-20">Захиалах<span class="lnr lnr-arrow-right"></span></button>
+                                                      
+                                                      <div class="col-md-6 d-flex justify-content-end">
+                                                          <button class="primary-btn">Захиалах<span class="lnr lnr-arrow-right"></span></button>
                                                       </div>
                                                       <div class="alert-msg"></div>
                                                     </div>

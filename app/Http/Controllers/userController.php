@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class userController extends Controller
 {
+    
+    public function index(){
+        $table = DB::table('category')->get();
+        if(session::has('username')){
+            return view('index', ['table'=>$table]);
+        }
+        else
+            return redirect('/login');
+    }
+
     public function edit($username){
         $user = DB::table('user')->where('username','=',$username)->first();
         return view('user', ['user' => $user]);
@@ -35,28 +45,39 @@ class userController extends Controller
         return redirect($path);
     }
 
-    public function orderedit($username){
-        
-    }
-
-    public function orderupdate(Request $req, $id){
-
+    public function orderstore(Request $req, $tid){
+        $quantity = $req->count;
+        $user = session('username');
+        $travelid = $tid;
+        $id = '191108002';
+        $status = DB::table('orders')
+                                ->insert(['id'=>$id, 'user_username'=>$user,
+                                          'travel_id'=>$travelid, 'traveler_number'=>$quantity]);
+        $path = session('username').'/order';
+        return redirect($path);
     }
 
     public function ordershow($username){
-        $order = DB::table('orders')->where('orders.user_username',$username)
+        $order = DB::table('orders')
                                     ->join('travel','travel.id','=','orders.travel_id')
-                                   ->get();
+                                    ->where('orders.user_username',$username)
+                                    ->select('orders.*', 'travel.name', 'travel.start', 'travel.end')
+                                    ->get();
         
         return view('userorder', ['order'=>$order]);
     }
 
     public function orderdelete($id, $idd){
+        
         $status = DB::table('orders')->where('id',$idd)
                                        ->delete();
+                                       
         $url = '/'.session('username').'/order';
         return redirect($url);
     }
 
-
+    public function logout(Request $req){
+        $req->session()->flush();
+        return redirect('/');
+    }
 }

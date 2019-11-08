@@ -7,30 +7,21 @@
 			<section>
 					<div class="container-fluid">
 						<div class="row">
+							@foreach ($table as $t)
 							<div class="col-lg-6 travel">
-								<a href='category/walk'>
+								<a href='category/{{$t->id}}'>
 									<div class="content-h">
 										<img class="img-fluid" src="img/walk.jpg" alt="water">
 									</div>
 								
 									<div class="text">
-										<h1> Явган аялал </h1>
+										<h1> {{$t->category}} </h1>
 										<p> Адал явдлаар дүүрэн явган аялал </p>
 									</div>
 								</a>
 							</div>
-							<div class="col-lg-6 travel">
-								<a href='category/water'>
-									<div class="content-h ">
-										<img class="img-fluid" src="img/water.jpg" alt="water">
-										<h3> Захиалах </h3>
-									</div>
-									<div class="text">
-										<h1> Усан аялал </h1>
-										<p> Уйтгар гуниг үгүй усан аялал </p>
-									</div>
-								</a>
-							</div>
+							@endforeach
+							
 						</div>
 					</div>
 			</section> 

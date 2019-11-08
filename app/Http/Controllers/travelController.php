@@ -62,4 +62,18 @@ class travelController extends Controller
         return redirect('admin/travel/show');
     }
 
+
+    public function travel(Request $req){
+        $id = $req->route('id');
+        $travel = DB::select('select id, name, price, category_id, dateDiff(end, start) as dat from travel');
+        
+        return view('water', ['travel'=>$travel, 'id'=>$id]);
+    }
+
+    public function travelmore(Request $req){
+        $id = $req->route('tid');
+        $travel = DB::select('SELECT travel.*, location.description as des from travel join location on travel.location_id = location.id where travel.id = ?',[$id]);
+        return view('baikal', ['travel'=>$travel, 'id'=>$id]);
+    }
+
 }

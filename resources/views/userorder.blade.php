@@ -7,6 +7,7 @@
                     <div class="col-lg-4 d-flex align-items-center user-links-wrap no-padding   ">
                         <a href="/user/{{session('username')}}">Бүртгэлийн мэдээлэл</a>
                         <a href="/{{session('username')}}/order">Захиалга</a>
+                        <a href="/logout">Гарах</a>
                     </div>    
                 </div>
 
@@ -33,7 +34,7 @@
                                     echo "<td>".$o->start."</td>";
                                     echo "<td>".$o->end."</td>";
                                     echo "<td>".$o->traveler_number."</td>";
-                                    echo "<td> <a href='/{{$o->user_username}}/order/{$o->id}/delete'> <span class='lnr lnr-trash'></span></a></td>";
+                                    echo "<td> <a href='/{$o->user_username}/order/{$o->id}/delete'> <span class='lnr lnr-trash'></span></a></td>";
                                     echo "</tr>";
 
                                   }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
+
 class categoryController extends Controller
 {
     public function index(){
@@ -17,8 +18,25 @@ class categoryController extends Controller
     }
 
     public function store(Request $req){
+       // echo $req;
+        $fileog;
+        echo $req->image;
+        if($req->hasFile('image')){
+            echo "dile";
+
+            $file = $req->file('photo');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('uploads/category/',$filename);
+            $fileog = $filename;
+        }
+        else{
+            echo 'npfo;e';
+            $fileog = '';
+        }
+
         $status = DB::table('category')->insertGetId(
-            ['category' => $req->category]
+            ['category' => $req->category, 'photo' => $fileog]
         );
         return redirect('admin/category/show');
     }   

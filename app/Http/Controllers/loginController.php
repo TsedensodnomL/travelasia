@@ -15,6 +15,7 @@ class loginController extends Controller
                                 ->select('password')
                                 ->first();
                                 
+        
         if($req->pass == $pass->password){
             session(['username'=>$req->username]);
             return redirect('/');

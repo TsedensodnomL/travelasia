@@ -4,40 +4,22 @@
 <section class="travels">
     <div class="container-fluid">
         <div class="row travel">
+        <?php $id ?>
+            @foreach ($travel as $t)
+                @if ($id == $t->category_id)
             <div class="col-lg-3">
-                <a href='/category/water/baikal'>
+                <a href='/category/{{$t->category_id}}/{{$t->id}}'>
                     <img class='img-fluid' src="{{ asset('img/ocean.jpg') }}" alt="">
                     <div class="description">
-                        <h4>Байгаль нуур</h4>
-                        <p> 3 өдөр </p>
-                        <p> Үнэ: <span class='price'>250,000₮ </span> </p>
+                        <h4>{{$t->name}}</h4>
+                        <p> {{$t->dat}} өдөр </p>
+                        <p> Үнэ: <span class='price'>{{$t->price}}</span> </p>
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3">
-            <img class='img-fluid' src="{{ asset('img/ocean.jpg') }}" alt="">
-                <div class="description">
-                    <h4>Байгаль нуур</h4>
-                    <p> 3 өдөр </p>
-                    <p> Үнэ: <span class='price'>250,000₮ </span> </p>
-                </div>
-            </div>
-            <div class="col-lg-3">
-            <img class='img-fluid' src="{{ asset('img/ocean.jpg') }}" alt="">
-                <div class="description">
-                    <h4>Байгаль нуур</h4>
-                    <p> 3 өдөр </p>
-                    <p> Үнэ: <span class='price'>250,000₮ </span> </p>
-                </div>
-            </div>
-            <div class="col-lg-3">
-            <img class='img-fluid' src="{{ asset('img/ocean.jpg') }}" alt="">
-                <div class="description">
-                    <h4>Байгаль нуур</h4>
-                    <p> 3 өдөр </p>
-                    <p> Үнэ: <span class='price'>250,000₮ </span> </p>
-                </div>
-            </div>
+                @endif
+            @endforeach
+        
         </div>
     </div>
 </section>
