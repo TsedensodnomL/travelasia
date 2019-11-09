@@ -108,18 +108,6 @@ Route::get('/admin', function(){
     return view('layouts.admin');
 });
 
-Route::get('/admin/orders', function(){
-    return view('orders');
-});
-
-Route::get('/admin/travels', function(){
-    return view('travels');
-});
-
-Route::get('/admin/addtravel', function(){
-    return view('addtravel');
-});
-
 
 //User travel ordering
 Route::get('category/{id}', 'travelController@travel');
@@ -131,3 +119,8 @@ Route::post('order/{id}', 'userController@orderstore');
 
 //Logout
 Route::get('/logout', 'userController@logout');
+
+//Admin 
+Route::get('/superior','adminController@d');
+
+Route::resource('/worker','adminController');

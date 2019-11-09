@@ -68,8 +68,10 @@
                             <div class="container-login100-form-btn">
                                     <button class="primary-btn">Нэвтрэх<span class="lnr lnr-arrow-right"></span></button>
                             </div>
-                                
+                            <a href='/signup' class="d-flex justify-content-center" style="margin: auto 0;display: block; margin-top: 1rem"> Бүргүүлэх </a>
+                            
                     </form>
+                  
                 </div>
 
             </div>

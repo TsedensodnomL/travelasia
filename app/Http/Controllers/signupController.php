@@ -13,6 +13,6 @@ class signupController extends Controller
         $pass = $request->pass;
 
         $status = DB::table('user')->insert(['username' => $username,'email' => $email,'password' => $pass,'user_type_code'=>'U']);
-        echo $status;
+        return redirect('/login');
     }
 }
