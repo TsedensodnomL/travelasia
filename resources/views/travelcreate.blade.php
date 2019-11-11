@@ -7,7 +7,7 @@
 								<div class="card-header">
 									<div class="card-title">Аялал нэмэх</div>
 								</div>
-								<form action='/admin/travel/store'; method='post'>
+								<form action='/admin/travel/store' enctype='multipart/form-data' method='post'>
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="card-body">
 									<div class="row">
@@ -86,6 +86,14 @@
 										</div>
                     
 									</div>	
+
+									<div class='row'>
+										<div class="form-group">
+												<label for="photo">Зураг</label>
+												<input type="file" accept=".png,.jpg" class="form-control-file" id="photo" name="image" placeholder="">
+					
+											</div>
+									</div>
 								</div>
 								<div class="card-action">
 									<button type="submit" class="btn btn-success">Submit</button>

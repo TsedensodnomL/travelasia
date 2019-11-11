@@ -7,7 +7,7 @@
 								<div class="card-header">
 									<div class="card-title">Аялал нэмэх</div>
 								</div>
-								<form action='/admin/category/store'; method='post'>
+								<form action='/admin/category/store' enctype='multipart/form-data' method='post'>
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="card-body">
 									<div class="row">
@@ -19,7 +19,7 @@
 											</div>
 											<div class="form-group">
 												<label for="photo">Зураг</label>
-												<input type="file" class="form-control-file" id="photo" name="image" placeholder="">
+												<input type="file" accept=".png,.jpg" class="form-control-file" id="photo" name="image" placeholder="">
 					
 											</div>
 										</div>

@@ -2,17 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
 {
-
-    public function d(){
-        return view('layouts.superior');
+    public function search(Request $req){
+        $pass = DB::table('user') 
+                                ->where([['username', '=',$req->username],
+                                         ['user_type_code', '=', $req->utype]])
+                                ->select('password','user_type_code')
+                                ->first();
+                                
+        
+        if($req->pass == $pass->password){
+            session(['username'=>$req->username, 'type'=>$pass->user_type_code]);
+            if($pass->user_type_code == 'A')
+                return redirect('/superior');
+            else if($pass->user_type_code == 'O')
+                return redirect('/admin');
+        }
+            
+        else
+            return redirect(url()->previous);
     }
 
-    public function 
+
+    public function d(){
+        if(session::has('username')){
+            if(session('type')==='A'){
+                return view('layouts.superior');
+            }
+            else if(session('type')==='O')
+                return view('layouts.admin');
+            else return redirect('/adminlogin');
+        }
+        else
+            return redirect('/adminlogin');
+    }
+
     /**
      * Display a listing of the resource.
      *

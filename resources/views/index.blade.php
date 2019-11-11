@@ -11,7 +11,7 @@
 							<div class="col-lg-6 travel">
 								<a href='category/{{$t->id}}'>
 									<div class="content-h">
-										<img class="img-fluid" src="img/walk.jpg" alt="water">
+										<img class="img-fluid" src="uploads/category/{{$t->photo}}" alt="water">
 									</div>
 								
 									<div class="text">

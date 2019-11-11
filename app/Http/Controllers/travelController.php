@@ -19,8 +19,26 @@ class travelController extends Controller
     }
 
     public function store(Request $req){
+
+        $fileog;
+        
+        if($req->hasFile('image')){
+            
+            $file = $req->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('uploads/travel/',$filename);
+            $fileog = $filename;
+        }
+        else{
+        
+            $fileog = '';
+        }
+        
+
+
         $status = DB::table('travel')->insert(
-            ['id' => $req->id, 'name' => $req->name, 'description' => $req->description,
+            ['id' => $req->id, 'name' => $req->name, 'description' => $req->description, 'photo'=>$fileog,
             'price' => $req->price, 'start' => $req->start, 'end' => $req->end, 'category_id'=>$req->category, 'location_id'=>$req->location]
         );
         return redirect('admin/travel/show');
@@ -65,7 +83,7 @@ class travelController extends Controller
 
     public function travel(Request $req){
         $id = $req->route('id');
-        $travel = DB::select('select id, name, price, category_id, dateDiff(end, start) as dat from travel');
+        $travel = DB::select('select id, name, photo, price, category_id, dateDiff(end, start) as dat from travel');
         
         return view('water', ['travel'=>$travel, 'id'=>$id]);
     }

@@ -18,22 +18,22 @@ class categoryController extends Controller
     }
 
     public function store(Request $req){
-       // echo $req;
+        
         $fileog;
-        echo $req->image;
+        
         if($req->hasFile('image')){
-            echo "dile";
-
-            $file = $req->file('photo');
+            
+            $file = $req->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$ext;
             $file->move('uploads/category/',$filename);
             $fileog = $filename;
         }
         else{
-            echo 'npfo;e';
+        
             $fileog = '';
         }
+        
 
         $status = DB::table('category')->insertGetId(
             ['category' => $req->category, 'photo' => $fileog]

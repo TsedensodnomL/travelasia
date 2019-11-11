@@ -9,7 +9,7 @@
                 @if ($id == $t->category_id)
             <div class="col-lg-3">
                 <a href='/category/{{$t->category_id}}/{{$t->id}}'>
-                    <img class='img-fluid' src="{{ asset('img/ocean.jpg') }}" alt="">
+                    <img class='img-fluid' src="/uploads/travel/{{$t->photo}}" alt='img'>
                     <div class="description">
                         <h4>{{$t->name}}</h4>
                         <p> {{$t->dat}} өдөр </p>

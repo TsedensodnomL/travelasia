@@ -6,7 +6,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="half-img col-lg-4 no-padding">
-                            <img class="img-fluid d-block" src="{{ asset('img/ocean.jpg') }}">
+                            <img class="img-fluid d-block" src="/uploads/travel/{{$travel[0]->photo}}" alt='img'>
                         </div>
                         <div class="booking-info-form col-lg-8 no-padding d-flex">
                             <div class="booking-info">

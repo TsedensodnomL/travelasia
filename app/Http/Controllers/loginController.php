@@ -12,12 +12,12 @@ class loginController extends Controller
     public function search(Request $req){
         $pass = DB::table('user') 
                                 ->where('username', $req->username)
-                                ->select('password')
+                                ->select('password','user_type_code')
                                 ->first();
                                 
         
         if($req->pass == $pass->password){
-            session(['username'=>$req->username]);
+            session(['username'=>$req->username, 'type'=>$pass->user_type_code]);
             return redirect('/');
         }
             

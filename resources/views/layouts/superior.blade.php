@@ -288,6 +288,7 @@
 			<div class="content">
 				<div class="page-inner">
         @yield('content')
+				
                 </div>
             </div>
         </div>

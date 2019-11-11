@@ -124,3 +124,12 @@ Route::get('/logout', 'userController@logout');
 Route::get('/superior','adminController@d');
 
 Route::resource('/worker','adminController');
+
+Route::get('/adminlogin', function(){
+    return view('adminlogin');
+});
+
+Route::get('/adminlogin/search', 'adminController@search');
+
+Route::get('/admin', 'operatorController@d');
+
