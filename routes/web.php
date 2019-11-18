@@ -103,6 +103,8 @@ Route::post('admin/order/{id}/update', 'orderController@update');
 
 Route::get('admin/order/{id}/delete', 'orderController@delete');
 
+Route::get('admin/order/show/{id}', 'orderController@lista');
+
 
 Route::get('/admin', function(){
     return view('layouts.admin');

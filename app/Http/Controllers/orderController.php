@@ -30,7 +30,7 @@ class orderController extends Controller
         $travel = DB::table('orders')
                                     ->join('travel', 'orders.travel_id','=','travel.id')
             
-                                    ->select('orders.*', 'travel.name')
+                                    ->select('orders.*','travel.id' ,'travel.name')
                                     ->get();
         return view('ordershow', ['travel'=>$travel]);
     }
@@ -60,6 +60,15 @@ class orderController extends Controller
                                     ->delete();
                                     echo $status;
         return redirect('admin/order/show');
+    }
+
+    public function lista($id){
+        $travel = DB::table('orders')
+                                    ->join('travel', 'orders.travel_id','=','travel.id')
+                                    ->where('travel.id', $id)
+                                    ->select('orders.*','travel.id' ,'travel.name')
+                                    ->get();
+        return view('orderlist', ['travel'=>$travel]);
     }
 
 }
