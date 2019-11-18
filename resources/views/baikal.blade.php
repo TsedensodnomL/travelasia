@@ -32,7 +32,12 @@
                                                       
                                                       
                                                       <div class="col-md-6">
-                                                        <input style="margin-bottom: 0" type="text" name="count" class="single-in form-control" placeholder="Хүний тоо" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Хүний тоо" required="">
+                                                        <input style="margin-bottom: 0" type="text" name="fname" class="single-in form-control" placeholder="Овог" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Овог'" required="">
+                                                        <input style="margin-bottom: 0" type="text" name="lname" class="single-in form-control" placeholder="Нэр" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Нэр'" required="">
+                                                        <input style="margin-bottom: 0" type="text" name="mail" class="single-in form-control" placeholder="И-мэйл" onfocus="this.placeholder = ''" onblur="this.placeholder = 'И-мэйл'" required="">
+                                                        <input style="margin-bottom: 0" type="text" name="phone" class="single-in form-control" placeholder="Утас" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Утас'" required="">
+                                                        <input style="margin-bottom: 0" type="text" name="gender" class="single-in form-control" placeholder="Хүйс" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Хүйс'" required="">
+                                                       
                                                       </div>
                                                       
                                                       <div class="col-md-6 d-flex justify-content-end">

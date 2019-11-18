@@ -20,7 +20,11 @@
                                     <th scope="col">Эхлэл</th>
                                     <th scope="col">Дуусах</th>
                                    
-                                    <th scope="col">Тоо</th>
+                                    <th scope="col">Овог</th>
+                                    <th scope="col">Нэр</th>
+                                    <th scope="col">И-мэйл</th>
+                                    <th scope="col">Утас</th>
+                                    <th scope="col">Хүйс</th>
                                     <th scope="col">Үйлдлэл</th>
                                   </tr>
                                 </thead>
@@ -33,7 +37,11 @@
                                     echo "<td>".$o->name."</td>";
                                     echo "<td>".$o->start."</td>";
                                     echo "<td>".$o->end."</td>";
-                                    echo "<td>".$o->traveler_number."</td>";
+                                    echo "<td>".$o->traveler_fname."</td>";
+                                    echo "<td>".$o->traveler_lname."</td>";
+                                    echo "<td>".$o->traveler_mail."</td>";
+                                    echo "<td>".$o->traveler_phone."</td>";
+                                    echo "<td>".$o->traveler_gender."</td>";
                                     echo "<td> <a href='/{$o->user_username}/order/{$o->id}/delete'> <span class='lnr lnr-trash'></span></a></td>";
                                     echo "</tr>";
 
