@@ -21,7 +21,12 @@ class orderController extends Controller
     public function store(Request $req){
         $status = DB::table('orders')->insert(
             ['id' => $req->id, 'user_username' => $req->name, 'travel_id' => $req->travel,
-            'traveler_number' => $req->count]
+            'traveler_fname' => $req->fname,
+            'traveler_lname' => $req->lname,
+            'traveler_mail' => $req->mail,
+            'traveler_phone' => $req->phone,
+            'traveler_gender' => $req->gender
+            ]
         );
         return redirect('admin/travel/show');
     }   

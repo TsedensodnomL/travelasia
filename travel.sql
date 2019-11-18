@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 09, 2019 at 08:14 AM
--- Server version: 5.7.23
--- PHP Version: 7.2.10
+-- Host: 127.0.0.1
+-- Generation Time: Nov 17, 2019 at 11:01 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,13 +28,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
   `category` varchar(30) NOT NULL,
-  `photo` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `photo` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `category`
@@ -50,13 +48,11 @@ INSERT INTO `category` (`id`, `category`, `photo`) VALUES
 -- Table structure for table `location`
 --
 
-DROP TABLE IF EXISTS `location`;
-CREATE TABLE IF NOT EXISTS `location` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `location` (
+  `id` int(11) NOT NULL,
   `location` varchar(30) NOT NULL,
-  `description` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `description` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `location`
@@ -72,24 +68,26 @@ INSERT INTO `location` (`id`, `location`, `description`) VALUES
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE IF NOT EXISTS `orders` (
-  `id` varchar(9) NOT NULL,
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
   `user_username` varchar(20) NOT NULL,
   `travel_id` int(11) NOT NULL,
-  `traveler_number` int(11) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `fk_order_user1_idx` (`user_username`),
-  KEY `fk_order_travel1_idx` (`travel_id`)
+  `traveler_fname` varchar(30) NOT NULL,
+  `traveler_lname` varchar(30) NOT NULL,
+  `traveler_mail` varchar(30) NOT NULL,
+  `traveler_phone` int(20) NOT NULL,
+  `traveler_gender` varchar(10) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_username`, `travel_id`, `traveler_number`, `date`) VALUES
-('191108001', 'claude', 191028001, 22, '2019-11-08 23:01:53');
+INSERT INTO `orders` (`id`, `user_username`, `travel_id`, `traveler_fname`, `traveler_lname`, `traveler_mail`, `traveler_phone`, `traveler_gender`, `date`) VALUES
+(191108015, 'B170910800', 191028001, 'zola', 'ANZO', 'gffds', 99246464, 'MALE', '2019-11-17 17:37:49'),
+(191108016, 'B170910800', 191028001, 'zola', 'ANZO', 'gffds', 99246464, 'MALE', '2019-11-17 17:38:31'),
+(191108017, 'B170910800', 191028001, 'vydfuaivjlkfsdlvd', 'ANZO', 'gffds', 99246464, 'MALE', '2019-11-17 17:40:16');
 
 -- --------------------------------------------------------
 
@@ -97,28 +95,25 @@ INSERT INTO `orders` (`id`, `user_username`, `travel_id`, `traveler_number`, `da
 -- Table structure for table `travel`
 --
 
-DROP TABLE IF EXISTS `travel`;
-CREATE TABLE IF NOT EXISTS `travel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `travel` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
+  `photo` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(400) NOT NULL,
   `price` double NOT NULL,
   `start` date NOT NULL,
   `end` date NOT NULL,
   `category_id` int(11) NOT NULL,
-  `location_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_travel_travel_category1_idx` (`category_id`),
-  KEY `fk_travel_location1_idx` (`location_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=191028002 DEFAULT CHARSET=utf8;
+  `location_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `travel`
 --
 
-INSERT INTO `travel` (`id`, `name`, `description`, `price`, `start`, `end`, `category_id`, `location_id`) VALUES
-(121, 'Tsedensodnom Lkhagvasuren', 'хувьцаа', 444, '2019-11-11', '2019-11-15', 2, 2),
-(191028001, 'Байгаль нуур', '3 хоногийн турш Байгаль нуураар завьтай аялах энэхүү аялал маань сайхан байх болно.', 250000, '2019-10-28', '2019-10-31', 1, 1);
+INSERT INTO `travel` (`id`, `name`, `photo`, `description`, `price`, `start`, `end`, `category_id`, `location_id`) VALUES
+(121, 'Tsedensodnom Lkhagvasuren', '', 'хувьцаа', 444, '2019-11-11', '2019-11-15', 2, 2),
+(191028001, 'Байгаль нуур', '', '3 хоногийн турш Байгаль нуураар завьтай аялах энэхүү аялал маань сайхан байх болно.', 250000, '2019-10-28', '2019-10-31', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -126,8 +121,7 @@ INSERT INTO `travel` (`id`, `name`, `description`, `price`, `start`, `end`, `cat
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `username` varchar(20) NOT NULL,
   `firstname` varchar(30) DEFAULT NULL,
   `lastname` varchar(30) DEFAULT NULL,
@@ -137,11 +131,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `phone` varchar(8) DEFAULT NULL,
-  `user_type_code` char(1) NOT NULL,
-  PRIMARY KEY (`username`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `phone_UNIQUE` (`phone`),
-  KEY `fk_user_user_type_idx` (`user_type_code`)
+  `user_type_code` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -150,6 +140,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`username`, `firstname`, `lastname`, `birthdate`, `gender`, `nationality`, `email`, `password`, `phone`, `user_type_code`) VALUES
 ('B170910038', NULL, NULL, '1999-07-07', NULL, NULL, 'ltsedee@gmail.com', '4', NULL, 'U'),
+('B170910800', NULL, NULL, NULL, NULL, NULL, 'zolooanzo@gmail.com', '123456', NULL, 'U'),
 ('claude', 'Tsedensodnom', 'Lkhagvasuren', '2000-10-15', 'Male', 'Mongolia', 'claudeburbank@gmail.com', 'Woosh', '95900501', 'U'),
 ('lol', NULL, NULL, NULL, NULL, NULL, 'asdf@gmail.com', '454545', NULL, 'U'),
 ('lol1', NULL, NULL, NULL, NULL, NULL, 'asadf@gmail.com', '111111', NULL, 'U'),
@@ -161,11 +152,9 @@ INSERT INTO `user` (`username`, `firstname`, `lastname`, `birthdate`, `gender`, 
 -- Table structure for table `user_type`
 --
 
-DROP TABLE IF EXISTS `user_type`;
-CREATE TABLE IF NOT EXISTS `user_type` (
+CREATE TABLE `user_type` (
   `code` char(1) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  PRIMARY KEY (`code`)
+  `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -176,6 +165,81 @@ INSERT INTO `user_type` (`code`, `type`) VALUES
 ('A', 'Admin'),
 ('O', 'Operator'),
 ('U', 'User');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_order_user1_idx` (`user_username`),
+  ADD KEY `fk_order_travel1_idx` (`travel_id`);
+
+--
+-- Indexes for table `travel`
+--
+ALTER TABLE `travel`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_travel_travel_category1_idx` (`category_id`),
+  ADD KEY `fk_travel_location1_idx` (`location_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`username`),
+  ADD UNIQUE KEY `email_UNIQUE` (`email`),
+  ADD UNIQUE KEY `phone_UNIQUE` (`phone`),
+  ADD KEY `fk_user_user_type_idx` (`user_type_code`);
+
+--
+-- Indexes for table `user_type`
+--
+ALTER TABLE `user_type`
+  ADD PRIMARY KEY (`code`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191108018;
+
+--
+-- AUTO_INCREMENT for table `travel`
+--
+ALTER TABLE `travel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191028002;
 
 --
 -- Constraints for dumped tables

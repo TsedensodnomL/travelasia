@@ -22,17 +22,15 @@
                                             <tr>
                                                 
                                                 <th>Аялал</th>
-                                               
+
                                                 
                                                 <th style="width: 10%">Үйлдэл</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
-                                            <tr>
-                                             
+                                            <tr>                                 
                                                 <th>Аялал</th>
-                                                
-                                            </tr>
+                                                                               </tr>
                                         </tfoot>
                                         <tbody>
                                             @foreach($travel as $c)
@@ -40,7 +38,7 @@
                                                 <td> <a href='/admin/order/show/{{$c->id}}'> <?php echo $c->name ?> </a> </td>
                                             </tr>
                                             @endforeach
-                                   
+
                                         </tbody>
                                     </table>
                                 </div>

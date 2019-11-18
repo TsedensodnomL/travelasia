@@ -46,13 +46,22 @@ class userController extends Controller
     }
 
     public function orderstore(Request $req, $tid){
-        $quantity = $req->count;
+        $fname = $req->fname;
+        $lname = $req->lname;
+        $mail = $req->mail;
+        $phone = $req->phone;
+        $gender = $req->gender;
         $user = session('username');
         $travelid = $tid;
-        $id = '191108002';
+        $id = '';
         $status = DB::table('orders')
-                                ->insert(['id'=>$id, 'user_username'=>$user,
-                                          'travel_id'=>$travelid, 'traveler_number'=>$quantity]);
+                                ->insert(['user_username'=>$user,
+                                          'travel_id'=>$travelid,
+                                          'traveler_fname'=>$fname,
+                                          'traveler_lname'=>$lname,
+                                          'traveler_mail'=>$mail,
+                                          'traveler_phone'=>$phone,
+                                          'traveler_gender'=>$gender]);
         $path = session('username').'/order';
         return redirect($path);
     }
