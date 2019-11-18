@@ -21,8 +21,8 @@
                                         <thead>
                                             <tr>
                                                 
-                                                <th>Аялал</th>
-                                                <th>Аялал</th><th>Аялал</th><th>Аялал</th><th>Аялал</th>
+                                            <th>Захиалагчийн дугаар</th><th>Овог</th><th>Нэр</th><th>И-Мэйл</th><th>Утас</th>
+                                                <th>Хүйс</th><th>Огноо</th>
                                                 
                                                 <th style="width: 10%">Үйлдэл</th>
                                             </tr>
@@ -30,8 +30,8 @@
                                         <tfoot>
                                             <tr>
                                              
-                                                <th>Аялал</th><th>Аялал</th><th>Аялал</th><th>Аялал</th><th>Аялал</th>
-                                                
+                                                <th>Захиалагчийн дугаар</th><th>Овог</th><th>Нэр</th><th>И-Мэйл</th><th>Утас</th>
+                                                <th>Хүйс</th><th>Огноо</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -39,10 +39,14 @@
                                         
                                         foreach($travel as $c){
                                             echo "<tr>";
-                                            echo "<td>".$c->id."</td>";
+                                        
                                             echo "<td>".$c->user_username."</td>";
-                                            echo "<td>".$c->name."</td>";
-                                            echo "<td>".$c->traveler_number."</td>";
+                                        
+                                            echo "<td>".$c->traveler_fname."</td>";
+                                            echo "<td>".$c->traveler_lname."</td>";
+                                            echo "<td>".$c->traveler_mail."</td>";
+                                            echo "<td>".$c->traveler_phone."</td>";
+                                            echo "<td>".$c->traveler_gender."</td>";
                                             echo "<td>".$c->date."</td>";
                                             
                                             echo "<td>";

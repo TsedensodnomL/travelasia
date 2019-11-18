@@ -8,7 +8,7 @@
 					<div class="container-fluid">
 						<div class="row">
 							@foreach ($table as $t)
-							<div class="col-lg-6 travel">
+							<div class="col-lg-3 travel">
 								<a href='category/{{$t->id}}'>
 									<div class="content-h">
 										<img class="img-fluid" src="uploads/category/{{$t->photo}}" alt="water">

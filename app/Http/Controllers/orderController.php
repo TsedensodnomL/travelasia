@@ -32,11 +32,9 @@ class orderController extends Controller
     }   
 
     public function show(){
-        $travel = DB::table('orders')
-                                    ->join('travel', 'orders.travel_id','=','travel.id')
-            
-                                    ->select('orders.*','travel.id' ,'travel.name')
-                                    ->get();
+        $travel = DB::select(' select travel.id, travel.name from travel join orders on travel.id = orders.travel_id group by travel.name, travel.id;');
+        // echo $travel;
+
         return view('ordershow', ['travel'=>$travel]);
     }
 
